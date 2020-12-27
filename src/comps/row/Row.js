@@ -7,8 +7,10 @@ const baseurl = "https://image.tmdb.org/t/p/original/";
 
 function Row(props) {
   const [movies, setMovies] = useState([]);
+
   const fetchUrl = props.fetchUrl;
   const title = props.title;
+  const isLargeRow = props.isLargeRow;
 
   // using React hooks to fetch Data (Run something when component mounts)
   useEffect(() => {
@@ -25,9 +27,6 @@ function Row(props) {
     fetchData();
   }, [fetchUrl]); // need to mention dependent varaiables as fuction need to update when they changes
 
-  //testing
-  console.log(movies);
-
   return (
     <div className="row">
       <h2>{title}</h2>
@@ -37,8 +36,10 @@ function Row(props) {
           <img
             // why a key: if changes react will only update it : this is for optimization
             key={movie.id}
-            className="row_poster"
-            src={`${baseurl}${movie.poster_path}`}
+            className={`row_poster ${isLargeRow && "row_posterLarge"}`} // setting consitional className
+            src={`${baseurl}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             alt={movie.name}
           />
         ))}
