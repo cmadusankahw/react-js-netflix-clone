@@ -1,0 +1,16 @@
+.footer {
+  padding-bottom: 30px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #131921;
+}
+
+.footer > p {
+  font-size: 14px;
+  color: white;
+}
+
+.footer_fadeBottom {
+  height: 7.4rem;
+  background-image: linear-gradient(180deg, transparent, #111, #131921);
+}
